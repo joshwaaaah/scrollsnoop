@@ -1,17 +1,38 @@
 {
   "name": "scrollsnoop",
-  "private": true,
   "version": "0.0.1",
+  "description": "A lightweight TypeScript library that provides CSS custom properties for scroll position, enabling dynamic scroll shadows and other scroll-based visual effects.",
   "type": "module",
+  "author": "Josh Hartshorne",
+  "license": "MIT",
+  "keywords": [
+    "scroll",
+    "typescript",
+    "shadows"
+  ],
+  "main": "dist/scrollsnoop.js",
+  "module": "dist/scrollsnoop.js",
+  "types": "dist/scrollsnoop.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/scrollsnoop.js",
+      "types": "./dist/scrollsnoop.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "release": "release-it"
+    "release": "release-it",
+    "prepublishOnly": "npm run build"
   },
   "devDependencies": {
     "release-it": "^19.0.4",
     "typescript": "~5.8.3",
-    "vite": "^7.0.4"
+    "vite": "^7.0.4",
+    "vite-plugin-dts": "^4.5.4"
   }
 }
