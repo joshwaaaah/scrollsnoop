@@ -14,7 +14,7 @@
     width: 100%;
     height: 10%;
     background: linear-gradient(to bottom, red, transparent);
-    opacity: var(--scroll-top-intensity);
+    opacity: var(--scroll-top-percentage);
   }
 
   &::after {
@@ -26,7 +26,7 @@
     width: 100%;
     height: 10%; 
     background: linear-gradient(to top, red, transparent);
-    opacity: var(--scroll-bottom-intensity);
+    opacity: var(--scroll-bottom-percentage);
   }
 }
 
@@ -42,7 +42,7 @@
     width: 10%;
     height: 100%;
     background: linear-gradient(to right, red, transparent);
-    opacity: var(--scroll-left-intensity);
+    opacity: var(--scroll-left-percentage);
   }
 
   
@@ -55,6 +55,6 @@
     width: 10%;
     height: 100%; 
     background: linear-gradient(to left, red, transparent);
-    opacity: var(--scroll-right-intensity);
+    opacity: var(--scroll-right-percentage);
   }
 }

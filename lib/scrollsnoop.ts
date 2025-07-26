@@ -34,10 +34,10 @@ class ScrollSnoop {
     const scrollPercentageBottom = 1 - scrollPercentageTop;
     const scrollPercentageRight = 1 - scrollPercentageLeft;
     
-    this.wrapper.style.setProperty('--scroll-left-intensity', scrollPercentageLeft.toFixed(2));
-    this.wrapper.style.setProperty('--scroll-top-intensity', scrollPercentageTop.toFixed(2));
-    this.wrapper.style.setProperty('--scroll-bottom-intensity', scrollPercentageBottom.toFixed(2));
-    this.wrapper.style.setProperty('--scroll-right-intensity', scrollPercentageRight.toFixed(2));
+    this.wrapper.style.setProperty('--scroll-left-percentage', scrollPercentageLeft.toFixed(2));
+    this.wrapper.style.setProperty('--scroll-top-percentage', scrollPercentageTop.toFixed(2));
+    this.wrapper.style.setProperty('--scroll-bottom-percentage', scrollPercentageBottom.toFixed(2));
+    this.wrapper.style.setProperty('--scroll-right-percentage', scrollPercentageRight.toFixed(2));
   }
 
   destroy() {
