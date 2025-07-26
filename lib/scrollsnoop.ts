@@ -26,18 +26,25 @@ class ScrollSnoop {
     this.updateShadow();
   }
 
-
   updateShadow() {
+    const hasHorizontalScroll = this.overflowContainer.scrollWidth > this.overflowContainer.clientWidth;
+    const hasVerticalScroll = this.overflowContainer.scrollHeight > this.overflowContainer.clientHeight;
+
     const scrollPercentageLeft = this.overflowContainer.scrollLeft / (this.overflowContainer.scrollWidth - this.overflowContainer.clientWidth) || 0;
     const scrollPercentageTop = this.overflowContainer.scrollTop / (this.overflowContainer.scrollHeight - this.overflowContainer.clientHeight) || 0;
 
     const scrollPercentageBottom = 1 - scrollPercentageTop;
     const scrollPercentageRight = 1 - scrollPercentageLeft;
     
-    this.wrapper.style.setProperty('--scroll-left-percentage', scrollPercentageLeft.toFixed(2));
-    this.wrapper.style.setProperty('--scroll-top-percentage', scrollPercentageTop.toFixed(2));
-    this.wrapper.style.setProperty('--scroll-bottom-percentage', scrollPercentageBottom.toFixed(2));
-    this.wrapper.style.setProperty('--scroll-right-percentage', scrollPercentageRight.toFixed(2));
+    if (hasHorizontalScroll) {
+      this.wrapper.style.setProperty('--scroll-left-percentage', scrollPercentageLeft.toFixed(2));
+      this.wrapper.style.setProperty('--scroll-right-percentage', scrollPercentageRight.toFixed(2));
+    }
+    
+    if (hasVerticalScroll) {
+      this.wrapper.style.setProperty('--scroll-top-percentage', scrollPercentageTop.toFixed(2));
+      this.wrapper.style.setProperty('--scroll-bottom-percentage', scrollPercentageBottom.toFixed(2));
+    }
   }
 
   destroy() {
