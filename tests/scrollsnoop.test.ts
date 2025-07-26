@@ -14,7 +14,14 @@ describe('scrollsnoop', () => {
     document.body.innerHTML = '';
   })
 
-  test('should be defined', () => {
-    expect(ScrollSnoop).toBeDefined();
+  describe('initialisation', () => {
+    test('should throw an error if no element is provided', () => {
+      expect(() => new ScrollSnoop()).toThrow();
+    });
+
+    test('should throw an error if the element is not a valid element', () => {
+      expect(() => new ScrollSnoop(document.createElement('div'))).toThrow();
+    });
+    
   });
 });
