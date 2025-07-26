@@ -1,17 +1,48 @@
 class ScrollSnoop {
 
-  private element: HTMLElement;
+  private wrapper: HTMLElement;
+  private overflowContainer: HTMLElement;
+  private overflowContainerObserver: ResizeObserver;
 
-  constructor(element: HTMLElement) {
-    if (!element) {
-      throw new Error('No element provided');
+  constructor(wrapper: HTMLElement, overflowContainer: HTMLElement) {
+    if (!wrapper) {
+      throw new Error('A wrapper element must be provided');
     }
 
-    if (!(element instanceof HTMLElement)) {
-      throw new Error('Invalid element provided');
+    if (!overflowContainer) {
+      throw new Error('An overflow container element must be provided');
     }
 
-    this.element = element;
+    this.wrapper = wrapper;
+    this.overflowContainer = overflowContainer;
+
+    this.updateShadow = this.updateShadow.bind(this);
+
+    this.overflowContainer.addEventListener('scroll', this.updateShadow)
+    
+    this.overflowContainerObserver = new ResizeObserver(this.updateShadow);
+    this.overflowContainerObserver.observe(this.overflowContainer);
+
+    this.updateShadow();
+  }
+
+
+  updateShadow() {
+    const scrollPercentageLeft = this.overflowContainer.scrollLeft / (this.overflowContainer.scrollWidth - this.overflowContainer.clientWidth) || 0;
+    const scrollPercentageTop = this.overflowContainer.scrollTop / (this.overflowContainer.scrollHeight - this.overflowContainer.clientHeight) || 0;
+
+    const scrollPercentageBottom = 1 - scrollPercentageTop;
+    const scrollPercentageRight = 1 - scrollPercentageLeft;
+    
+    this.wrapper.style.setProperty('--scroll-left-intensity', scrollPercentageLeft.toFixed(2));
+    this.wrapper.style.setProperty('--scroll-top-intensity', scrollPercentageTop.toFixed(2));
+    this.wrapper.style.setProperty('--scroll-bottom-intensity', scrollPercentageBottom.toFixed(2));
+    this.wrapper.style.setProperty('--scroll-right-intensity', scrollPercentageRight.toFixed(2));
+  }
+
+  destroy() {
+    this.overflowContainerObserver.disconnect();
+    this.overflowContainer.removeEventListener('scroll', this.updateShadow);
   }
 }
 

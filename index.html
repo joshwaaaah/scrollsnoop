@@ -4,9 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>scrollsnoop</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
   </head>
-  <body>
-    <div id="app"></div>
+  <body class="p-4">
+    <div class="scrollsnoop | relative w-[300px]">
+      <div class="scrollsnoop-overflow-container | max-h-[100px] overflow-auto">
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore optio molestiae aliquam obcaecati, incidunt quia reiciendis molestias facilis asperiores mollitia voluptatibus quo eius qui ad illum? Ducimus enim eos ipsum!</p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore optio molestiae aliquam obcaecati, incidunt quia reiciendis molestias facilis asperiores mollitia voluptatibus quo eius qui ad illum? Ducimus enim eos ipsum!</p>
+      </div>
+    </div>
+
+    <div class="scrollsnoop-horizontal | mt-20 relative w-[300px]">
+      <div class="scrollsnoop-horizontal-overflow-container | max-h-[100px] overflow-auto">
+        <p class="w-[800px]">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore optio molestiae aliquam obcaecati, incidunt quia reiciendis molestias facilis asperiores mollitia voluptatibus quo eius qui ad illum? Ducimus enim eos ipsum!</p>
+      </div>
+    </div>
+
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
