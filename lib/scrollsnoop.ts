@@ -3,7 +3,7 @@ import { throttle } from 'lodash-es';
 class ScrollSnoop {
   private wrapper: HTMLElement;
   private overflowContainer: HTMLElement;
-  private overflowContainerObserver: ResizeObserver;
+  private resizeObserver: ResizeObserver;
 
   constructor(wrapper: HTMLElement, overflowContainer: HTMLElement) {
     if (!wrapper) {
@@ -21,8 +21,9 @@ class ScrollSnoop {
 
     this.overflowContainer.addEventListener('scroll', this.updateShadow)
     
-    this.overflowContainerObserver = new ResizeObserver(this.updateShadow);
-    this.overflowContainerObserver.observe(this.overflowContainer);
+    this.resizeObserver = new ResizeObserver(this.updateShadow);
+    this.resizeObserver.observe(this.wrapper);
+    this.resizeObserver.observe(this.overflowContainer);
 
     this.updateShadow();
   }
@@ -37,19 +38,15 @@ class ScrollSnoop {
     const scrollPercentageBottom = 1 - scrollPercentageTop;
     const scrollPercentageRight = 1 - scrollPercentageLeft;
     
-    if (hasHorizontalScroll) {
-      this.wrapper.style.setProperty('--scroll-left-percentage', scrollPercentageLeft.toFixed(2));
-      this.wrapper.style.setProperty('--scroll-right-percentage', scrollPercentageRight.toFixed(2));
-    }
+    this.wrapper.style.setProperty('--scroll-left-percentage', hasHorizontalScroll ? scrollPercentageLeft.toFixed(2) : '0.00');
+    this.wrapper.style.setProperty('--scroll-right-percentage', hasHorizontalScroll ? scrollPercentageRight.toFixed(2) : '0.00');
     
-    if (hasVerticalScroll) {
-      this.wrapper.style.setProperty('--scroll-top-percentage', scrollPercentageTop.toFixed(2));
-      this.wrapper.style.setProperty('--scroll-bottom-percentage', scrollPercentageBottom.toFixed(2));
-    }
+    this.wrapper.style.setProperty('--scroll-top-percentage', hasVerticalScroll ? scrollPercentageTop.toFixed(2) : '0.00');
+    this.wrapper.style.setProperty('--scroll-bottom-percentage', hasVerticalScroll ? scrollPercentageBottom.toFixed(2) : '0.00');
   }
 
   destroy() {
-    this.overflowContainerObserver.disconnect();
+    this.resizeObserver.disconnect();
     this.overflowContainer.removeEventListener('scroll', this.updateShadow);
   }
 }
