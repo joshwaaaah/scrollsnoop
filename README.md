@@ -8,7 +8,6 @@ A lightweight TypeScript library that provides CSS custom properties for scroll 
 - **CSS custom properties**: Provides `--scroll-*-percentage` variables for easy styling
 - **Automatic cleanup**: Properly disposes of event listeners and observers
 - **TypeScript support**: Fully typed for better development experience
-- **Lightweight**: Minimal footprint with no external dependencies
 
 ## Installation
 
