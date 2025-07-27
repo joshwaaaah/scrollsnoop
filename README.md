@@ -44,10 +44,10 @@ const scrollSnoop = new ScrollSnoop(
 
 The library automatically sets these CSS custom properties on the wrapper element:
 
-- `--scroll-top-percentage`: Scroll position from top (0.00 to 1.00)
-- `--scroll-bottom-percentage`: Scroll position from bottom (1.00 to 0.00)
-- `--scroll-left-percentage`: Scroll position from left (0.00 to 1.00)
-- `--scroll-right-percentage`: Scroll position from right (1.00 to 0.00)
+- `--scroll-top-percentage`: Scroll position from top
+- `--scroll-bottom-percentage`: Scroll position from bottom
+- `--scroll-left-percentage`: Scroll position from left
+- `--scroll-right-percentage`: Scroll position from right
 
 ### Example: Scroll Shadows
 
