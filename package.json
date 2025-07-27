@@ -1,6 +1,6 @@
 {
   "name": "scrollsnoop",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "A lightweight TypeScript library that provides CSS custom properties for scroll position, enabling dynamic scroll shadows and other scroll-based visual effects.",
   "type": "module",
   "author": "Josh Hartshorne",
