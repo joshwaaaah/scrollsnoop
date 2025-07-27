@@ -5,6 +5,16 @@ class ScrollSnoop {
   private overflowContainer: HTMLElement;
   private resizeObserver: ResizeObserver;
 
+  /**
+   * @description Creates a new ScrollSnoop instance.
+   * @example
+   * ```ts
+   * const scrollSnoop = new ScrollSnoop(wrapper, overflowContainer);
+   * ```
+   * 
+   * @param wrapper - The element that the CSS properties will be applied to.
+   * @param overflowContainer - The overflowing container element.
+   */
   constructor(wrapper: HTMLElement, overflowContainer: HTMLElement) {
     if (!wrapper) {
       throw new Error('A wrapper element must be provided');
