@@ -1,5 +1,6 @@
-class ScrollSnoop {
+import { throttle } from 'lodash';
 
+class ScrollSnoop {
   private wrapper: HTMLElement;
   private overflowContainer: HTMLElement;
   private overflowContainerObserver: ResizeObserver;
@@ -16,7 +17,7 @@ class ScrollSnoop {
     this.wrapper = wrapper;
     this.overflowContainer = overflowContainer;
 
-    this.updateShadow = this.updateShadow.bind(this);
+    this.updateShadow = throttle(this.updateShadow.bind(this), 50);
 
     this.overflowContainer.addEventListener('scroll', this.updateShadow)
     
